@@ -14,7 +14,16 @@
   function save() { try { localStorage.setItem(STORE, JSON.stringify(state)); } catch (e) {} }
 
   const exercisesOf = sec => sec.blocks.filter(b => b.t === 'ex');
-  const exPassed = id => !!(state.ex[id] && state.ex[id].passed);
+  // Mappa id → esercizio, per riconoscere anche i tentativi già fatti che raggiungono una soglia abbassata.
+  const EX_BY_ID = {};
+  UNITS.forEach(u => u.sections.forEach(sec => exercisesOf(sec).forEach(e => { EX_BY_ID[e.id] = e; })));
+  const exPassed = id => {
+    const r = state.ex[id];
+    if (!r) return false;
+    if (r.passed) return true;
+    const e = EX_BY_ID[id];
+    return !!(e && e.items && e.items.length && r.best / e.items.length >= (e.pass || PASS));
+  };
   const sectionDone = sec => exercisesOf(sec).every(e => exPassed(e.id));
   const unitDone = u => u.sections.every(sectionDone);
   const unitUnlocked = idx => idx === 0 || unitDone(UNITS[idx - 1]);

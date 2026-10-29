@@ -355,7 +355,7 @@ const UNITS = [
           { t: 'box', title: 'Parole utili: saluti e prime frasi', html: '<p><b>Saluti:</b> Ciao! Buongiorno! Buon pomeriggio! Buonasera! Buonanotte! Arrivederci! A presto! A domani!</p><p><b>Parole gentili:</b> Per favore. Grazie. Grazie mille. Prego. Scusa. Mi dispiace. Va bene. Non c’è problema.</p><p><b>Prime domande:</b> Come stai? Come va? Come ti chiami? Di dove sei? Quanti anni hai? Parli italiano? Capisci?</p><p><b>Prime risposte:</b> Sto bene. Sto molto bene. Così così. Mi chiamo Roberto. Sono argentino. Sono argentina. Sono di Buenos Aires. Ho quarantuno anni. Parlo un po’ italiano. Non capisco.</p>' },
           { t: 'box', title: 'Parole molto importanti', html: '<p>Sì · No · Forse · Bene · Male · Molto · Poco · Adesso · Oggi · Domani · Ieri</p><p><b>Frasi utili in classe:</b> Puoi ripetere, per favore? Come si dice in italiano? Che significa? Non lo so. Ho una domanda. È facile. È difficile.</p>' },
           { t: 'img', src: 'img/u1-alice.webp', alt: 'Alice pensa', w: 'sm' },
-          { t: 'ex', id: 'u1g-ripasso', kind: 'choice', title: 'Ripasso finale dell’unità 1', instr: 'Supera questo ripasso per sbloccare l’Unità 2.', pass: 0.8, items: [
+          { t: 'ex', id: 'u1g-ripasso', kind: 'choice', title: 'Ripasso finale dell’unità 1', instr: 'Supera questo ripasso per sbloccare l’Unità 2.', pass: 0.65, items: [
             { q: 'Io ___ Roberto.', opts: ['ho', 'sono', 'è'], a: 1 },
             { q: 'Natalia ___ duecento anni.', opts: ['è', 'ha', 'hai'], a: 1 },
             { q: 'Come ti ___?', opts: ['chiami', 'chiamo', 'chiama'], a: 0 },
