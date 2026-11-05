@@ -95,7 +95,7 @@
     const nxt = nextStep();
     const cta = nxt
       ? `<a class="btn" href="#/u${nxt.u.n}/${nxt.s.id}">${done ? 'Continua' : 'Comincia'}: Unità ${nxt.u.n}, ${nxt.s.letter}. ${esc(nxt.s.title)}</a>`
-      : `<p class="allset">Hai completato le unità 1 e 2. Brava, bravo!</p>`;
+      : `<p class="allset">Hai completato tutte le unità disponibili. Brava, bravo!</p>`;
 
     const cards = [
       ...UNITS.map((u, i) => unitCard(u.n, u.cover, unitUnlocked(i), u)),
@@ -165,7 +165,7 @@
     const after = unitDone(u)
       ? (nextIdx < UNITS.length
         ? `<a class="btn" href="#/u${UNITS[nextIdx].n}">Vai all’Unità ${UNITS[nextIdx].n}</a>`
-        : `<p class="allset">Unità completata. L’Unità 3 arriverà presto.</p>`)
+        : `<p class="allset">Unità completata. Le prossime unità arriveranno presto.</p>`)
       : '';
     app.innerHTML = `
       <section class="unit-hero">
@@ -174,7 +174,7 @@
         </figure>
         <div class="unit-head">
           <p class="script-label big">Unità ${u.n}</p>
-          <blockquote>“${esc(u.quote)}”<cite>${esc(u.character)}, dal romanzo <i>${esc(u.novel)}</i> di Roberto Fader</cite></blockquote>
+          <blockquote>${u.quote ? `“${esc(u.quote)}”` : ''}<cite>${esc(u.character)}, dal romanzo <i>${esc(u.novel)}</i> di Roberto Fader</cite></blockquote>
           <div class="meter"><div class="meter-bar"><span style="width:${(d / u.sections.length) * 100}%"></span></div><p>${d} di ${u.sections.length} sezioni completate</p></div>
           <ol class="secs">${rows}</ol>
           ${after}
@@ -266,7 +266,7 @@
       case 'img': return el(`<figure class="b-img ${b.w ? 'w-' + b.w : ''}"><img src="${b.src}" alt="${esc(b.alt)}" loading="lazy">${b.cap ? `<figcaption>${esc(b.cap)}</figcaption>` : ''}</figure>`);
       case 'gallery': return el(`<div class="b-gallery">${b.items.map(i => `<figure><img src="${i.src}" alt="${esc(i.alt)}" loading="lazy"><figcaption>${esc(i.cap)}</figcaption></figure>`).join('')}</div>`);
       case 'box': return el(`<aside class="b-box"><h3>${esc(b.title)}</h3>${b.html}</aside>`);
-      case 'dialog': return el(`<div class="b-dialog">${b.title ? `<h3>${esc(b.title)}</h3>` : ''}${b.lines.map(([who, line]) => `<p><b class="who who-${who.toLowerCase()}">${esc(who)}</b><span>${esc(line)}</span></p>`).join('')}</div>`);
+      case 'dialog': return el(`<div class="b-dialog">${b.title ? `<h3>${esc(b.title)}</h3>` : ''}${b.lines.map(([who, line]) => who ? `<p><b class="who who-${who.toLowerCase().replace(/[^a-zà-ù]+/g, '-')}">${esc(who)}</b><span>${esc(line)}</span></p>` : `<p class="narr">${esc(line)}</p>`).join('')}</div>`);
       case 'oral': return el(`<aside class="b-oral"><h3>${esc(b.title)}</h3><p class="note">Attività da fare a voce con un compagno: non serve per completare la sezione.</p><ul>${b.items.map(i => `<li>${esc(i)}</li>`).join('')}</ul></aside>`);
       case 'write': return renderWrite(b);
       case 'conj': return el(`<div class="b-conj">${b.verbs.map(v => `<table><caption>${v.inf}</caption><tbody>${v.forms.map(f => `<tr><td>${f}</td></tr>`).join('')}</tbody></table>`).join('')}</div>`);

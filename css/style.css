@@ -162,7 +162,8 @@ main { max-width: 1120px; margin: 0 auto; padding: clamp(20px, 4vw, 48px) clamp(
 .b-dialog { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 16px 0; font-family: var(--serif); }
 .b-dialog p { display: grid; grid-template-columns: 6.2rem 1fr; gap: 10px; margin: 6px 0; line-height: 1.6; }
 .who { font: 600 .92rem/1.6 var(--sans); color: var(--navy); }
-.who-carlotta, .who-natalia { color: var(--rust); }
+.who-carlotta, .who-natalia, .who-rosa, .who-alice, .who-sofia, .who-la-donna-in-rosa { color: var(--rust); }
+.b-dialog p.narr { display: block; font-style: italic; color: var(--ink-soft); margin: 12px 0; }
 
 .b-oral, .b-write { border: 1px dashed #b9c0c6; border-radius: var(--radius); padding: 16px 20px; }
 .b-oral ul { margin: 8px 0 0; padding-left: 1.2rem; font-family: var(--serif); }
