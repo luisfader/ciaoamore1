@@ -95,7 +95,7 @@
     const nxt = nextStep();
     const cta = nxt
       ? `<a class="btn" href="#/u${nxt.u.n}/${nxt.s.id}">${done ? 'Continua' : 'Comincia'}: Unità ${nxt.u.n}, ${nxt.s.letter}. ${esc(nxt.s.title)}</a>`
-      : `<p class="allset">Hai completato tutte le unità disponibili. Brava, bravo!</p>`;
+      : `<p class="allset">Hai completato il livello A1. Complimenti! Ci vediamo al livello A2.</p>`;
 
     const cards = [
       ...UNITS.map((u, i) => unitCard(u.n, u.cover, unitUnlocked(i), u)),
@@ -165,7 +165,7 @@
     const after = unitDone(u)
       ? (nextIdx < UNITS.length
         ? `<a class="btn" href="#/u${UNITS[nextIdx].n}">Vai all’Unità ${UNITS[nextIdx].n}</a>`
-        : `<p class="allset">Unità completata. Le prossime unità arriveranno presto.</p>`)
+        : `<p class="allset">Complimenti! Hai finito il livello A1.</p>`)
       : '';
     app.innerHTML = `
       <section class="unit-hero">
@@ -253,7 +253,7 @@
     } else if (UNITS[ui + 1]) {
       html = `<p class="foot-msg ok">${CHECK} Hai completato l’Unità ${u.n}! L’Unità ${UNITS[ui + 1].n} è sbloccata.</p><a class="btn" href="#/u${UNITS[ui + 1].n}">Vai all’Unità ${UNITS[ui + 1].n}</a>`;
     } else {
-      html = `<p class="foot-msg ok">${CHECK} Hai completato l’Unità ${u.n}! Le prossime unità arriveranno presto.</p><a class="btn" href="#/">Torna alle unità</a>`;
+      html = `<p class="foot-msg ok">${CHECK} Hai completato l’Unità ${u.n} e tutto il livello A1. Complimenti!</p><a class="btn" href="#/">Torna alle unità</a>`;
     }
     foot.innerHTML = html;
     app.querySelectorAll('.page-steps span').forEach((sp, i) => sp.classList.toggle('done', sectionDone(u.sections[i])));
